@@ -307,6 +307,7 @@ export const Keyboard = forwardRef<KeyboardRefs, KeyboardProps>(
       keys: keyRefs,
       container: containerRef,
     }));
+    
 
     const KeycapTexture = useTexture('/goodwell_uv.png')
     KeycapTexture.colorSpace = THREE.SRGBColorSpace
