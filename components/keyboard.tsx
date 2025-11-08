@@ -317,19 +317,30 @@ export const Keyboard = forwardRef<KeyboardRefs, KeyboardProps>(
       roughness: 0.7,
     });
 
-    const knobTexture = useTexture('/screen_uv.png')
-    knobTexture.colorSpace = THREE.SRGBColorSpace
-    knobTexture.flipY = false
+    const screenTexture = useTexture('/screen_uv.png')
+    screenTexture.flipY = false
+    screenTexture.colorSpace = THREE.SRGBColorSpace
+    screenTexture.repeat.set(-1,-1)
+    screenTexture.offset.set(1,1)
     
+    const knurlTexture = useTexture('/Knurl.jpg')
+    knurlTexture.flipY = false
+    knurlTexture.repeat.set(3,3);
+
 
     const screenMat = new THREE.MeshStandardMaterial({
-      map: knobTexture,
+      map: screenTexture,
       roughness: 0.7,
+      
     });
+
+
     const knobMat = new THREE.MeshStandardMaterial({
       color: '#E24818',
       roughness: 0.4,
-      metalness: 0.1
+      metalness: 0.8,
+      bumpMap: knurlTexture,
+      bumpScale: 1
     });
 
 
@@ -344,6 +355,16 @@ export const Keyboard = forwardRef<KeyboardRefs, KeyboardProps>(
     });
 
     const switchContactsMat = new THREE.MeshStandardMaterial({
+      color: "#ffffff",
+      roughness: 0.1,
+      metalness: 1,
+    });
+    const PCB = new THREE.MeshStandardMaterial({
+      color: "#259B58",
+      roughness: 0.1,
+      metalness: 1,
+    });
+    const Plate = new THREE.MeshStandardMaterial({
       color: "#cccccc",
       roughness: 0.1,
       metalness: 1,
@@ -357,7 +378,7 @@ export const Keyboard = forwardRef<KeyboardRefs, KeyboardProps>(
             castShadow
             receiveShadow
             geometry={nodes.Plate.geometry}
-            material={keycapMat}
+            material={Plate}
             position={[-0.022, -0.006, -0.057]}
           />
           <mesh
@@ -372,7 +393,7 @@ export const Keyboard = forwardRef<KeyboardRefs, KeyboardProps>(
             castShadow
             receiveShadow
             geometry={nodes.PCB.geometry}
-            material={keycapMat}
+            material={PCB}
             position={[-0.022, -0.009, -0.057]}
           />
 
