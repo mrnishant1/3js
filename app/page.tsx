@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import Scene from "./Scene";
+import Scene from "./Scene.tsx";
 import './page.css'
 
 
