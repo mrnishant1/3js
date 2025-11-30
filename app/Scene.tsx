@@ -1,5 +1,5 @@
-import { Keyboard, KeyboardRefs } from "../components/Keyboard.tsx";
-import { Keycap } from "../components/Keycap.tsx";
+import { Keyboard, KeyboardRefs } from "../components/Keyboard";
+import { Keycap } from "../components/Keycap";
 import { Environment } from "@react-three/drei";
 import { useRef, useState } from "react";
 import * as THREE from "three";
